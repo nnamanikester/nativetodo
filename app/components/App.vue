@@ -11,7 +11,7 @@
             <StackLayout ~drawerContent backgroundColor="#ffffff">
                 <Label class="drawer-header" text="Drawer"/>
 
-                <Label class="drawer-item" text="Home"/>
+                <Label class="drawer-item yes" text="Home"/>
                 <Label class="drawer-item" text="About"/>
                 <Label class="drawer-item" text="Settings"/>
             </StackLayout>
@@ -19,16 +19,27 @@
             <GridLayout ~mainContent columns="*" rows="*">
                 <Label class="message" :text="msg" col="0" row="0"/>
             </GridLayout>
+
+            <GridLayout ~mainContent columns="*" rows="*">
+                <NavigationButton android.systemIcon="ic_menu_back" @tap="goHome" />
+            </GridLayout>
         </RadSideDrawer>
     </Page>
 </template>
 
-<script >
+<script>
+  import Home from '~/pages/Home.vue'
   export default {
     data() {
       return {
-        msg: 'Intersting! I love this shi*'
+        msg: 'Intersting! I love this shi*, Okay'
       }
+    },
+    methods: {
+        goHome () {
+            this.$navigateTo(Home);
+            
+        }
     }
   }
 </script>
@@ -64,4 +75,5 @@
         color: #333333;
         font-size: 16;
     }
+
 </style>
